@@ -1,87 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WDD 131 – Dynamic Web Fundamentals - Albert Silva</title>
-    <meta name="description" content="WDD 131 – Dynamic Web Fundamentals - Albert Homepage">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WDD 131 - Dynamic Web Fundamentals - Albert Silva</title>
+    <meta name="description" content="WDD 131, Dynamic Web Fundamentals - Albert Homepage">
     <meta name="author" content="Albert Silva">
 
-    <!-- Google Fonts Roboto -->
+    <!-- Roboto from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono&family=Roboto+Slab:wght@400;600&display=swap"
         rel="stylesheet">
 
+    <!-- Style and script -->
     <link rel="stylesheet" href="styles/base.css">
     <script src="scripts/getdates.js" defer></script>
 </head>
 
 <body>
     <header>
-        <h1>WDD 131: Dynamic Web Fundamentals - Albert Silva</h1>
+        <h1>WDD 131: Dynamic Web Fundamentals - <span class="highlight">Albert Silva</span></h1>
         <nav>
-            <ul>
-                <li><a href="https://www.linkedin.com/in/albertvsilva/">LinkedIn</a></li>
-                <li><a href="https://byupw.instructure.com/">Canvas</a></li>
-                <li><a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/9?lang=eng">Scripture</a></li>
-                <li><a href="#">Final Project</a></li>
-            </ul>
+            <a href="https://www.linkedin.com/in/albertsilva/">LinkedIn</a>
+            <a href="https://byui.instructure.com/" target="_blank">I-Learn</a>
+            <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/9?lang=eng"
+                target="_blank">Scripture</a>
+            <a href="finalproject/">Final Project</a>
         </nav>
     </header>
 
     <main>
-        <section class="about-me">
+        <section class="card">
             <h2>About Me</h2>
-            <img src="images/Alberts_picture.jpg" alt="Your Profile Picture" class="profile-image">
-            <p>My name is Albert, a passionate lifelong learner currently pursuing my transition into the field of Data
-                Science. I am
-                proudly Brazilian, born in the city of Ilhéus, located in the south of Bahia. With several years of
-                experience as a
-                logistics manager, I have developed strong problem-solving and analytical skills that I now apply to
-                data-driven
-                projects. I am married and a proud father of an 11-year-old boy. I am deeply motivated by continuous
-                learning and enjoy
-                transforming data into strategic insights. I am excited about the future and committed to
-                building meaningful solutions that create real impact.
-            </p>
+            <div class="me">
+                <img class="profile" src="images/Alberts_picture.jpg" alt="Student Profile Image" width="200"
+                    height="136">
+                <p>I'm Albert, a lifelong learner from Ilhéus, Brazil, currently transitioning into Data Science. With a
+                    solid background
+                    as a logistics manager, I bring strong problem-solving and analytical skills to data-driven
+                    projects. I'm a proud
+                    husband and father, driven by a passion for learning and a desire to turn data into meaningful,
+                    impactful solutions.
+                </p>
+            </div>
 
-            <h3>Buenos Aires, Argentina</h3>
-            <p>Buenos Aires is the vibrant capital city of Argentina, known for its rich culture, historic architecture,
-                and passionate
-                lifestyle.
-                It is often called the "Paris of South America" because of its European-style boulevards, cafés, and
-                cultural life. The
-                city is famous for tango dancing, delicious Argentine steaks, and iconic landmarks such as the Obelisk,
-                La Boca
-                neighborhood, and Teatro Colón. Buenos Aires is also home to passionate football fans and world-renowned
-                clubs like Boca
-                Juniors and River Plate. Its people, known as "porteños", are proud of their heritage and warmly welcome
-                visitors from
-                around the world.
-
-            </p>
-            <p><img src="images/Flag_of_Argentina.jpg" alt="Flag of Argentina" class="location-flag"></p>
+            <div class="country">
+                <h3>Buenos Aires, Argentina</h3>
+                <figure>
+                    <img src="images/Flag_of_Argentina.jpg" alt="Flag of Argentina" width="200">
+                </figure>
+                <p>Buenos Aires, the capital of Argentina, is known for its vibrant culture, historic architecture, and
+                    passionate spirit.
+                    Often called the "Paris of South America," it’s famous for tango, Argentine steaks, and landmarks
+                    like the Obelisk, La
+                    Boca, and Teatro Colón. Home to Boca Juniors and River Plate, the city reflects the pride and warmth
+                    of its people, the
+                    porteños.</p>
+            </div>
         </section>
 
         <section class="web-resources">
             <h2>Web Dev Resources</h2>
-            <ul>
-                <li><a href="https://dev.to/">Dev.to Community</a></li>
-                <li><a href="https://www.smashingmagazine.com/">Smashing Magazine</a></li>
-                <li><a href="https://css-tricks.com/">CSS Tricks</a></li>
-                <li><a href="https://www.w3schools.com/">W3 Schools</a></li>
-                <li><a href="https://www.udemy.com/">Udemy</a></li>
-                <li><a href="#">Image Placeholder</a></li>
-            </ul>
+            <div class="middle">
+                <ul>
+                    <li><a href="https://dev.to" target="_blank">Dev.to Community</a></li>
+                    <li><a href="https://smashingmagazine.com">Smashing Magazine</a></li>
+                    <li><a href="https://css-tricks.com" target="_blank">CSS Tricks</a></li>
+                    <li><a href="https://www.w3schools.com" target="_blank">W3 Schools</a></li>
+                    <li><a href="https://www.udemy.com" target="_blank">Udemy</a></li>
+                </ul>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025; Albert Silva; Brazil</p>
-        <p>Last Modification: <span id="lastModified"></span></p>
+        <p><span id="currentYear"></span> Albert Vicente Santos Silva, Buenos Aires</p>
+        <p class="highlight" id="lastModified"></p>
     </footer>
 </body>
 
