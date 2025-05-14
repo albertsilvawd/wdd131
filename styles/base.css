@@ -1,0 +1,117 @@
+/* Reset and Box Model */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main font */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Headings with bold weight */
+h1 {
+    font-weight: 700;
+}
+
+/* Header styling */
+header {
+    background-color: #286481;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigation styling */
+nav {
+    background-color: #2b4361;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    flex: 1 1 100%;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.75em 1.5em;
+    display: block;
+}
+
+nav a:hover {
+    background-color: #2b4361;
+}
+
+/* Main layout grid */
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    max-width: 960px;
+    margin: 20px auto;
+}
+
+/* Card styling for sections */
+.about-me,
+.web-resources {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Web resources list */
+.web-resources ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.web-resources ul li {
+    margin-bottom: 0.5em;
+}
+
+.web-resources ul li a {
+    color: #1f75f5;
+    text-decoration: none;
+}
+
+.web-resources ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Profile image styling */
+.profile-image {
+    max-width: 150px;
+    border-radius: 5px;
+    float: right;
+    margin-left: 15px;
+}
+
+/* Country flag styling */
+.location-flag {
+    max-width: 100px;
+    margin-top: 10px;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #286481;
+    color: white;
+    font-size: 0.8em;
+    margin-top: auto;
+}
