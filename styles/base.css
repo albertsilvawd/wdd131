@@ -16,12 +16,14 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 body {
     line-height: 1.5;
     font-family: 'Roboto', sans-serif;
     color: #333;
+    background-color: #f9f9f9;
 }
 
 header {
@@ -36,7 +38,6 @@ h3 {
 }
 
 h1 {
-    background-color: var(--blue);
     font-size: 1.4rem;
     padding: 1rem;
     text-align: center;
@@ -72,11 +73,15 @@ nav a:visited {
     color: #fff;
     text-decoration: none;
     font-family: 'Roboto Mono', monospace;
+    transition: background-color 0.3s ease, font-weight 0.3s ease;
 }
 
-nav a:hover {
+nav a:hover,
+nav a:focus {
     background-color: var(--brown);
     font-weight: 600;
+    outline: 2px dashed #FFD700;
+    outline-offset: 3px;
 }
 
 main {
@@ -86,6 +91,18 @@ main {
     grid-template-columns: 2fr 1fr;
     grid-gap: 0.5rem;
     padding: 1rem;
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .me img {
+        float: none;
+        display: block;
+        margin: 0 auto 1rem;
+    }
 }
 
 footer {
@@ -113,6 +130,9 @@ img {
     font-family: 'Roboto', sans-serif;
     border-radius: .5rem;
     border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 .card p {
@@ -146,8 +166,7 @@ img {
 }
 
 .highlight {
-    color: var(--yellow);
-    font-size: smaller;
+    color: #FFD700;
     font-weight: 600;
 }
 
