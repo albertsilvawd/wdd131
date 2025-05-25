@@ -1,0 +1,55 @@
+/* General Reset and Basic Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+/* Style for the hero section */
+.hero {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Ensure the images are responsive */
+.hero img {
+    width: 100%;
+    /* The image will scale to 100% of the container's width */
+    height: auto;
+    /* The height adjusts automatically to maintain aspect ratio */
+}
+
+/* Optional: Use object-fit for more control over how the image fits */
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the entire container without distortion */
+}
+
+/* Add some spacing to the main section */
+main {
+    padding: 20px;
+}
+
+/* Optional: Add some styling for the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+/* Ensure that the layout is responsive */
+@media (max-width: 768px) {
+
+    /* Example: Make the hero section more centered on smaller screens */
+    .hero {
+        padding: 10px;
+    }
+}

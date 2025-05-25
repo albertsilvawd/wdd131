@@ -1,0 +1,135 @@
+/* Define CSS variable for border */
+:root {
+    --bord: 1px solid #777;
+}
+
+/* Universal Selector */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* HTML Element Selectors */
+body {
+    font-family: Roboto, helvetica, sans-serif;
+    margin: 1rem;
+}
+
+/* Container styling for header, main, footer */
+header,
+main,
+footer {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+}
+
+h1 {
+    border-bottom: 1px solid rgb(0 0 0 / 0.1);
+    margin: 1rem 0;
+}
+
+/* Main content styling */
+main {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    /* Creates two columns */
+    grid-gap: 1.5rem;
+}
+
+h2 {
+    color: navy;
+    grid-column: 1/3;
+    /* Makes the h2 span across both columns */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Section styling */
+section {
+    padding: 1rem;
+}
+
+h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 1rem;
+    border-top: 1px solid rgb(0 0 0 / 0.1);
+    padding: 0.5rem 0;
+    font-size: smaller;
+}
+
+/* Class Selectors */
+.banner {
+    border: 1px solid rgb(0 0 0 / 0.2);
+    padding: 1rem;
+    background-color: rgb(230, 243, 254);
+    font-weight: 700;
+    word-break: break-word;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.callout {
+    border: 1px solid rgb(0 0 0 / 0.1);
+    color: #000;
+    background-color: #eee;
+    grid-column: 1/3;
+    /* Makes the .callout span across both columns */
+    padding: 1rem;
+}
+
+/* Pseudo-classes for anchor tags */
+a:link,
+a:visited {
+    color: navy;
+    /* Navy color for links */
+}
+
+a:hover {
+    color: purple;
+    /* Purple color when hovering over links */
+}
+
+/* Apply border to prevent doubling of borders in the table */
+div.datatable {
+    border-top: var(--bord);
+    border-bottom: var(--bord);
+}
+
+div.col {
+    border-left: var(--bord);
+    border-right: var(--bord);
+}
+
+/* Styling the last row of the data table */
+div.datatable div:last-child {
+    background-color: #333;
+    /* Dark gray background for the last row */
+}
+
+/* Pseudo-element for ordered list marker */
+ol li::marker {
+    content: "✓";
+    /* Change list marker to checkmark */
+    color: navy;
+    /* Navy color for the marker */
+    font-size: 2rem;
+    /* Font size for the marker */
+}
+
+/* Responsiveness: Stacks columns on smaller screens */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+        /* Stacks columns into a single column */
+    }
+}
