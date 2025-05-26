@@ -3,7 +3,7 @@
     --primary-color: #d91023;
     /* Peru flag red */
     --accent-color: #ffc107;
-    /* warm yellow */
+    /* Warm yellow */
     --overlay-bg: rgba(255, 255, 255, 0.9);
     --text-dark: #222;
     --text-light: #fff;
@@ -12,7 +12,7 @@
 /* Base styling */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #fff;
     color: var(--text-dark);
 }
