@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filtered Temples</title>
+    <link rel="stylesheet" href="styles/filtered-temples.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Temples Gallery</h1>
+        <nav>
+            <button onclick="filterTemples('all')">Home</button>
+            <button onclick="filterTemples('old')">Old</button>
+            <button onclick="filterTemples('new')">New</button>
+            <button onclick="filterTemples('large')">Large</button>
+            <button onclick="filterTemples('small')">Small</button>
+        </nav>
+    </header>
+
+    <main id="temples-container">
+        <!-- Dynamic temple cards go here -->
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> | Last Modified: <span id="lastModified"></span></p>
+    </footer>
+
+    <script src="scripts/filtered-temples.js"></script>
+</body>
+
+</html>
