@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filtered Temples</title>
+    <meta name="description"
+        content="Interactive gallery of temples with filters by year, size, and location. Created by Albert Silva." />
+    <meta name="author" content="Albert Silva" />
+    <title>Filtered Temple Album – WDD 131 – Albert Silva</title>
     <link rel="stylesheet" href="styles/filtered-temples.css" />
+    <script src="scripts/filtered-temples.js" defer></script>
 </head>
 
 <body>
     <header>
         <h1>Temples Gallery</h1>
-        <nav>
+        <nav aria-label="Main navigation">
             <button onclick="filterTemples('all')">Home</button>
             <button onclick="filterTemples('old')">Old</button>
             <button onclick="filterTemples('new')">New</button>
@@ -21,14 +25,20 @@
     </header>
 
     <main id="temples-container">
-        <!-- Dynamic temple cards go here -->
+        <!-- Temple cards will be rendered here dynamically using JavaScript -->
     </main>
 
     <footer>
-        <p>&copy; <span id="year"></span> | Last Modified: <span id="lastModified"></span></p>
+        <nav aria-label="Helpful links">
+            <a href="https://www.churchofjesuschrist.org" target="_blank" rel="noopener">Church Website</a>
+            <a href="https://www.churchofjesuschrist.org/temples" target="_blank" rel="noopener">Temple Info</a>
+            <a href="https://en.wikipedia.org/wiki/Temple_architecture_(Latter_Day_Saints)" target="_blank"
+                rel="noopener">Wikipedia</a>
+            <a href="https://dev.to" target="_blank" rel="noopener">Dev.to</a>
+            <a href="https://css-tricks.com" target="_blank" rel="noopener">CSS Tricks</a>
+        </nav>
+        <p>&copy; <span id="year"></span> | Last Modified: <span id="lastModified"></span> | Albert Silva</p>
     </footer>
-
-    <script src="scripts/filtered-temples.js"></script>
 </body>
 
 </html>
