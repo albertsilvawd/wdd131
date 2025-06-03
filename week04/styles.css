@@ -1,43 +1,47 @@
-/* General styles for the table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    /* Remove spacing between cells */
-    margin: 20px 0;
+/* General styles for the body */
+body {
     font-family: Arial, sans-serif;
-}
-
-caption {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-th,
-td {
-    padding: 8px 12px;
-    text-align: center;
-    border: 1px solid #ddd;
-    /* Light border */
-}
-
-th {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     background-color: #f4f4f4;
-    /* Header background color */
 }
 
-/* Zebra striping - alternating colors for odd and even rows */
-tr:nth-child(odd) {
-    background-color: #f9f9f9;
-    /* Background color for odd rows */
+/* Main element containing images */
+main {
+    width: 100%;
+    text-align: center;
 }
 
-tr:nth-child(even) {
-    background-color: #ffffff;
-    /* Background color for even rows */
+/* Style for images */
+img {
+    width: 400px;
+    height: 600px;
+    margin: 20px 0;
+    display: block;
+    opacity: 0;
+    /* Initial opacity to create fade-in effect */
+    animation: fadeIn 1.5s forwards;
+    /* Apply fade-in animation */
 }
 
-/* Emojis to mark ✔️ and ❌ */
-td {
-    font-size: 1.2em;
-    /* Larger size for emojis */
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
 }
