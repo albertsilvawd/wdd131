@@ -1,122 +1,126 @@
-// ✅ Array of temple objects
+// ✅ Array of temple objects using WebP images
 const temples = [
     {
         templeName: "Aba Nigeria",
         location: "Aba, Nigeria",
         dedicated: "2005, August, 7",
         area: 11500,
-        imageUrl: "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/aba-nigeria/400x250/aba-nigeria-temple-lds-273999-wallpaper.jpg"
+        imageUrl: "images/aba.webp"
     },
     {
         templeName: "Manti Utah",
         location: "Manti, Utah, United States",
         dedicated: "1888, May, 21",
         area: 74792,
-        imageUrl: "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/manti-utah/400x250/manti-temple-768192-wallpaper.jpg"
+        imageUrl: "images/manti.webp"
     },
     {
         templeName: "Payson Utah",
         location: "Payson, Utah, United States",
         dedicated: "2015, June, 7",
         area: 96630,
-        imageUrl: "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/payson-utah/400x225/payson-utah-temple-exterior-1416671-wallpaper.jpg"
+        imageUrl: "images/payson.webp"
     },
     {
         templeName: "Yigo Guam",
         location: "Yigo, Guam",
         dedicated: "2020, May, 2",
         area: 6861,
-        imageUrl: "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/yigo-guam/400x250/yigo_guam_temple_2.jpg"
+        imageUrl: "images/yigo.webp"
     },
     {
-        templeName: "Lima Perú",
-        location: "Lima, Perú",
+        templeName: "Lima Peru",
+        location: "Lima, Peru",
         dedicated: "1986, January, 10",
         area: 9600,
-        imageUrl: "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/lima-peru/400x250/lima-peru-temple-evening-1075606-wallpaper.jpg"
+        imageUrl: "images/lima.webp"
     },
     {
         templeName: "Mexico City Mexico",
         location: "Mexico City, Mexico",
         dedicated: "1983, December, 2",
         area: 116642,
-        imageUrl: "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/mexico-city-mexico/400x250/mexico-city-temple-exterior-1518361-wallpaper.jpg"
+        imageUrl: "images/mexico.webp"
     },
     {
         templeName: "Recife Brazil",
         location: "Recife, Brazil",
         dedicated: "2000, December, 15",
         area: 37000,
-        imageUrl: "https://www.churchofjesuschrist.org/imgs/74d57cefebf31773df61b0b882067ee236de5279/full/640%2C/0/default"
+        imageUrl: "images/recife.webp"
     },
     {
         templeName: "Tokyo Japan",
         location: "Tokyo, Japan",
         dedicated: "1980, October, 27",
         area: 52800,
-        imageUrl: "https://www.churchofjesuschrist.org/imgs/df6b96801c9f11ec99eeeeeeac1ea2207e7c517b/full/640%2C/0/default"
+        imageUrl: "images/tokyo.webp"
     },
     {
         templeName: "Rome Italy",
         location: "Rome, Italy",
         dedicated: "2019, March, 10",
         area: 41000,
-        imageUrl: "https://www.churchofjesuschrist.org/imgs/17e2c70d687fffedfe115197e57fa8f5d1d369bb/full/640%2C/0/default"
+        imageUrl: "images/rome.webp"
     }
 ];
 
-// ✅ Get the container where temple cards will be rendered
+// ✅ Get the container element from the DOM
 const container = document.getElementById("temples-container");
 
-// ✅ Render function that creates temple cards dynamically
+// ✅ Render function: displays temple cards dynamically
 function renderTemples(templesArray) {
-    container.innerHTML = ""; // Clear the container
+    container.innerHTML = ""; // Clear any existing content
 
-    templesArray.forEach((temple) => {
+    templesArray.forEach(temple => {
         const card = document.createElement("section");
         card.className = "temple-card";
+
         card.innerHTML = `
         <h2>${temple.templeName}</h2>
         <p><strong>Location:</strong> ${temple.location}</p>
         <p><strong>Dedicated:</strong> ${temple.dedicated}</p>
         <p><strong>Area:</strong> ${temple.area.toLocaleString()} sq ft</p>
-        <img src="${temple.imageUrl}" alt="${temple.templeName}" loading="lazy" />
+        <img 
+          src="${temple.imageUrl}" 
+          alt="${temple.templeName}" 
+          width="400" 
+          height="250" 
+          loading="lazy"
+        >
       `;
+
         container.appendChild(card);
     });
 }
 
-// ✅ Filter temples based on filter type from menu
+// ✅ Filter temples based on criteria (old, new, large, small, all)
 function filterTemples(filterType) {
-    let filteredTemples;
+    let filtered;
 
     switch (filterType) {
         case "old":
-            filteredTemples = temples.filter(
-                (t) => new Date(t.dedicated).getFullYear() < 1900
-            );
+            filtered = temples.filter(t => new Date(t.dedicated).getFullYear() < 1900);
             break;
         case "new":
-            filteredTemples = temples.filter(
-                (t) => new Date(t.dedicated).getFullYear() > 2000
-            );
+            filtered = temples.filter(t => new Date(t.dedicated).getFullYear() > 2000);
             break;
         case "large":
-            filteredTemples = temples.filter((t) => t.area > 90000);
+            filtered = temples.filter(t => t.area > 90000);
             break;
         case "small":
-            filteredTemples = temples.filter((t) => t.area < 10000);
+            filtered = temples.filter(t => t.area < 10000);
             break;
         default:
-            filteredTemples = temples;
+            filtered = temples;
     }
 
-    renderTemples(filteredTemples);
+    renderTemples(filtered);
 }
 
-// ✅ Update footer with current year and last modified date
+// ✅ Footer date updates
 document.getElementById("year").textContent = new Date().getFullYear();
 document.getElementById("lastModified").textContent = document.lastModified;
 
-// ✅ Initial load of all temples
+// ✅ Initial render
 renderTemples(temples);
