@@ -1,6 +1,6 @@
 @media (min-width: 780px) {
     header {
-        display: flex;
+        display: grid;
         justify-content: space-between;
         flex-direction: row;
     }

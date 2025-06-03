@@ -60,7 +60,7 @@ h3 {
 
 nav {
     background-color: #333;
-    display: flex;
+    display: grid;
 }
 
 nav a,
@@ -159,7 +159,7 @@ img {
 }
 
 .middle {
-    display: flex;
+    display: grid;
     flex-direction: column;
     justify-content: center;
     height: 80%;

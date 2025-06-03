@@ -15,7 +15,7 @@
 
 header {
     background-color: var(--background-color);
-    display: flex;
+    display: grid;
     flex-direction: column;
     color: var(--nav-color);
     padding: 1rem;
@@ -76,7 +76,7 @@ footer {
 }
 
 .navigation {
-    display: flex;
+    display: grid;
     flex-direction: column;
     align-content: center;
 }
