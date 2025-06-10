@@ -1,0 +1,100 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Root variables for easy color updates */
+:root {
+    --primary-color: #D72638;
+    --secondary-color: #F9F9F9;
+    --accent-color: #1B2A41;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: var(--secondary-color);
+    color: var(--accent-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+header {
+    background: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.site-logo {
+    height: 70px;
+    margin-bottom: 0.5rem;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 700;
+    margin-top: 0.5em;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(27, 42, 65, 0.10);
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+/* Color samples for visual reference */
+.color-sample {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 6px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.primary-color {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.secondary-color {
+    background: var(--secondary-color);
+    color: var(--accent-color);
+    border: 1px solid #eee;
+}
+
+.accent-color {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* Wireframe images styling */
+.wireframe-img {
+    max-width: 320px;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(27, 42, 65, 0.08);
+}
+
+ul {
+    padding-left: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+    }
+
+    .wireframe-img {
+        max-width: 100%;
+    }
+}
