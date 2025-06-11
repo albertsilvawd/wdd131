@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Confirmation</title>
+    <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Thank You for Your Review!</h1>
+    </header>
+
+    <main>
+        <p>Your review has been submitted successfully.</p>
+        <p>Total Reviews Submitted: <span id="review-count"></span></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Albert Silva - Product Review Form</p>
+    </footer>
+
+    <script>
+        const reviewCount = localStorage.getItem('reviewCount') || 0;
+        document.getElementById('review-count').textContent = reviewCount;
+    </script>
+</body>
+
+</html>
