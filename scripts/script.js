@@ -1,51 +1,24 @@
-const input = document.querySelector('#favchap');
-const button = document.querySelector('button');
-const list = document.querySelector('#list');
+const products = [
+    { id: "fc-1888", name: "flux capacitor", averagerating: 4.5 },
+    { id: "fc-2050", name: "power laces", averagerating: 4.7 },
+    { id: "fs-1987", name: "time circuits", averagerating: 3.5 },
+    { id: "ac-2000", name: "low voltage reactor", averagerating: 3.9 },
+    { id: "jj-1969", name: "warp equalizer", averagerating: 5.0 }
+];
 
-// Load or create the chapters array from localStorage
-let chaptersArray = getChapterList() || [];
-
-// Render all chapters saved on load
-chaptersArray.forEach(chapter => {
-    displayList(chapter);
+const productSelect = document.getElementById('product-name');
+products.forEach(product => {
+    const option = document.createElement('option');
+    option.value = product.id;
+    option.textContent = product.name;
+    productSelect.appendChild(option);
 });
 
-button.addEventListener('click', () => {
-    if (input.value !== '') {
-        displayList(input.value);
-        chaptersArray.push(input.value);
-        setChapterList();
-        input.value = '';
-        input.focus();
-    }
+const form = document.getElementById('review-form');
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    let reviewCount = localStorage.getItem('reviewCount') || 0;
+    reviewCount++;
+    localStorage.setItem('reviewCount', reviewCount);
+    window.location.href = 'review.html';
 });
-
-function displayList(item) {
-    const li = document.createElement('li');
-    const deleteButton = document.createElement('button');
-    li.textContent = item;
-    deleteButton.textContent = '❌';
-    deleteButton.classList.add('delete');
-    li.appendChild(deleteButton);
-    list.appendChild(li);
-
-    deleteButton.addEventListener('click', function () {
-        list.removeChild(li);
-        deleteChapter(li.textContent);
-        input.focus();
-    });
-}
-
-function setChapterList() {
-    localStorage.setItem('myFavBOMList', JSON.stringify(chaptersArray));
-}
-
-function getChapterList() {
-    return JSON.parse(localStorage.getItem('myFavBOMList'));
-}
-
-function deleteChapter(chapter) {
-    chapter = chapter.slice(0, chapter.length - 1).trim();
-    chaptersArray = chaptersArray.filter(item => item !== chapter);
-    setChapterList();
-}
