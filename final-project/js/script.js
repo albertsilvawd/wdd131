@@ -9,51 +9,16 @@ const teamGrid = document.getElementById('team-grid');
 
 // Data arrays for dynamic content
 const teamMembers = [
-    {
-        name: 'John Smith',
-        position: 'CEO & Founder',
-        image: 'images/team1.jpg',
-        bio: 'Experienced leader with 15+ years in the industry.'
-    },
-    {
-        name: 'Sarah Johnson',
-        position: 'Lead Developer',
-        image: 'images/team2.jpg',
-        bio: 'Full-stack developer passionate about clean code.'
-    },
-    {
-        name: 'Mike Wilson',
-        position: 'Designer',
-        image: 'images/team3.jpg',
-        bio: 'Creative designer focused on user experience.'
-    },
-    {
-        name: 'Lisa Chen',
-        position: 'Marketing Director',
-        image: 'images/team4.jpg',
-        bio: 'Strategic marketer with expertise in digital campaigns.'
-    }
+    { name: 'Albert Silva', position: 'CEO & Founder', image: 'images/team1.webp', bio: 'Experienced visionary with years of experience in organizations' },
+    { name: 'Sarah Johnson', position: 'Lead Developer', image: 'images/team2.webp', bio: 'Full-stack developer passionate about clean code.' },
+    { name: 'Mike Wilson', position: 'Designer', image: 'images/team3.webp', bio: 'Creative designer focused on user experience.' },
+    { name: 'Lisa Chen', position: 'Marketing Director', image: 'images/team4.webp', bio: 'Strategic marketer with expertise in digital campaigns.' }
 ];
 
 const demoContent = {
-    demo1: {
-        title: 'Interactive Dashboard',
-        description: 'Experience our real-time analytics dashboard with live data visualization.',
-        features: ['Real-time Updates', 'Custom Widgets', 'Export Options'],
-        color: '#3498db'
-    },
-    demo2: {
-        title: 'Advanced Search',
-        description: 'Powerful search functionality with AI-powered suggestions and filters.',
-        features: ['Smart Autocomplete', 'Advanced Filters', 'Saved Searches'],
-        color: '#e74c3c'
-    },
-    demo3: {
-        title: 'Collaboration Tools',
-        description: 'Seamless team collaboration with integrated communication features.',
-        features: ['Team Chat', 'File Sharing', 'Task Management'],
-        color: '#2ecc71'
-    }
+    demo1: { title: 'Interactive Dashboard', description: 'Experience our real-time analytics dashboard with live data visualization.', features: ['Real-time Updates', 'Custom Widgets', 'Export Options'], color: '#3498db' },
+    demo2: { title: 'Advanced Search', description: 'Powerful search functionality with AI-powered suggestions and filters.', features: ['Smart Autocomplete', 'Advanced Filters', 'Saved Searches'], color: '#e74c3c' },
+    demo3: { title: 'Collaboration Tools', description: 'Seamless team collaboration with integrated communication features.', features: ['Team Chat', 'File Sharing', 'Task Management'], color: '#2ecc71' }
 };
 
 // Form validation patterns
@@ -68,15 +33,10 @@ function initializeLocalStorage() {
     if (!localStorage.getItem('visitCount')) {
         localStorage.setItem('visitCount', '1');
         localStorage.setItem('firstVisit', new Date().toISOString());
-        localStorage.setItem('sessionData', JSON.stringify({
-            pages: ['index.html'],
-            startTime: Date.now()
-        }));
+        localStorage.setItem('sessionData', JSON.stringify({ pages: ['index.html'], startTime: Date.now() }));
     } else {
         const currentCount = parseInt(localStorage.getItem('visitCount')) + 1;
         localStorage.setItem('visitCount', currentCount.toString());
-
-        // Update session data
         const sessionData = JSON.parse(localStorage.getItem('sessionData') || '{}');
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         if (!sessionData.pages.includes(currentPage)) {
@@ -87,13 +47,7 @@ function initializeLocalStorage() {
 
     // Store user preferences (Required: localStorage)
     if (!localStorage.getItem('userPreferences')) {
-        const defaultPreferences = {
-            theme: 'light',
-            newsletter: false,
-            language: 'en',
-            notifications: true,
-            savedForms: []
-        };
+        const defaultPreferences = { theme: 'light', newsletter: false, language: 'en', notifications: true, savedForms: [] };
         localStorage.setItem('userPreferences', JSON.stringify(defaultPreferences));
     }
 }
@@ -105,23 +59,12 @@ function initializeMobileMenu() {
             e.preventDefault();
             mobileMenu.classList.toggle('active');
             navMenu.classList.toggle('active');
-
             // Track menu usage
             const preferences = JSON.parse(localStorage.getItem('userPreferences') || '{}');
             preferences.mobileMenuUsed = (preferences.mobileMenuUsed || 0) + 1;
             localStorage.setItem('userPreferences', JSON.stringify(preferences));
         });
 
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!mobileMenu.contains(e.target) && !navMenu.contains(e.target)) {
                 mobileMenu.classList.remove('active');
@@ -137,12 +80,12 @@ function initializeCTAButton() {
         ctaBtn.addEventListener('click', (e) => {
             e.preventDefault();
 
-            // Get user data from localStorage (Required: localStorage)
+            // Get user data from localStorage
             const preferences = JSON.parse(localStorage.getItem('userPreferences') || '{}');
             const visitCount = parseInt(localStorage.getItem('visitCount') || '1');
             const sessionData = JSON.parse(localStorage.getItem('sessionData') || '{}');
 
-            // Conditional branching based on visit count (Required: If/else)
+            // Conditional branching based on visit count
             let message, actionType;
             if (visitCount === 1) {
                 message = `Welcome! This is your first visit. Let us show you around!`;
@@ -160,7 +103,6 @@ function initializeCTAButton() {
 
             showNotification(message, actionType);
 
-            // Update preferences with timestamp
             preferences.lastCTAClick = new Date().toISOString();
             preferences.ctaClicks = (preferences.ctaClicks || 0) + 1;
             localStorage.setItem('userPreferences', JSON.stringify(preferences));
@@ -177,15 +119,13 @@ function initializeCTAButton() {
 // Demo functionality (Required: Arrays and loops)
 function initializeDemoSection() {
     if (demoButtons.length > 0 && demoDisplay) {
-        demoButtons.forEach((btn, index) => {
+        demoButtons.forEach((btn) => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const demoKey = btn.getAttribute('data-demo');
-
                 // Remove active class from all buttons
                 demoButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
                 displayDemo(demoKey);
 
                 // Track demo usage in localStorage
@@ -203,14 +143,13 @@ function displayDemo(demoKey) {
     const demo = demoContent[demoKey];
     if (!demo) return;
 
-    // Create feature list using loops (Required: Arrays/loops)
+    // Create feature list using loops
     let featuresList = '<ul class="demo-features">';
     demo.features.forEach(feature => {
         featuresList += `<li>${feature}</li>`;
     });
     featuresList += '</ul>';
 
-    // Use template literals (Required: Template literals)
     const demoHTML = `
         <div class="demo-content" style="border-left: 4px solid ${demo.color};">
             <h3 style="color: ${demo.color};">${demo.title}</h3>
@@ -236,16 +175,13 @@ function displayDemo(demoKey) {
 function displayTeamMembers() {
     if (!teamGrid) return;
 
-    // Clear existing content
     teamGrid.innerHTML = '';
 
-    // Create team member cards using forEach loop (Required: Arrays/loops)
     teamMembers.forEach((member, index) => {
         const memberCard = document.createElement('div');
         memberCard.className = 'team-member';
         memberCard.style.animationDelay = `${index * 0.2}s`;
 
-        // Use template literals (Required: Template literals)
         memberCard.innerHTML = `
             <img src="${member.image}" alt="${member.name}" onerror="this.src='images/placeholder-team.jpg'">
             <h3>${member.name}</h3>
@@ -256,12 +192,9 @@ function displayTeamMembers() {
 
         teamGrid.appendChild(memberCard);
 
-        // Add click event to contact button
         const contactBtn = memberCard.querySelector('.contact-member');
         contactBtn.addEventListener('click', () => {
             showNotification(`Contacting ${member.name}...`, 'info');
-
-            // Track team member interactions
             const preferences = JSON.parse(localStorage.getItem('userPreferences') || '{}');
             preferences.teamInteractions = preferences.teamInteractions || {};
             preferences.teamInteractions[member.name] = new Date().toISOString();
@@ -283,7 +216,6 @@ function initializeContactForm() {
         newsletter: document.getElementById('newsletter')
     };
 
-    // Real-time validation
     Object.entries(formElements).forEach(([key, element]) => {
         if (element && key !== 'newsletter') {
             element.addEventListener('blur', () => validateField(key, element));
@@ -291,14 +223,12 @@ function initializeContactForm() {
         }
     });
 
-    // Form submission (Required: Form handling)
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         let isValid = true;
         const formData = {};
 
-        // Validate all fields (Required: If/else statements)
         Object.entries(formElements).forEach(([key, element]) => {
             if (element) {
                 if (key === 'newsletter') {
@@ -319,7 +249,6 @@ function initializeContactForm() {
         }
     });
 
-    // Load saved form data from localStorage
     loadSavedFormData();
 }
 
@@ -330,12 +259,10 @@ function validateField(fieldName, element) {
     let isValid = true;
     let errorMessage = '';
 
-    // Required field check
     if (['name', 'email', 'subject', 'message'].includes(fieldName) && !value) {
         isValid = false;
         errorMessage = 'This field is required.';
     } else if (value) {
-        // Pattern validation using if/else (Required: If/else)
         if (fieldName === 'name' && !validationPatterns.name.test(value)) {
             isValid = false;
             errorMessage = 'Please enter a valid name (2-50 characters, letters only).';
@@ -351,12 +278,10 @@ function validateField(fieldName, element) {
         }
     }
 
-    // Display error
     if (errorElement) {
         errorElement.textContent = errorMessage;
     }
 
-    // Add/remove error class
     if (isValid) {
         element.classList.remove('error');
     } else {
@@ -381,7 +306,6 @@ function clearError(fieldName) {
 
 // Form submission (Required: localStorage and DOM manipulation)
 function submitForm(formData) {
-    // Save form data to localStorage (Required: localStorage)
     const preferences = JSON.parse(localStorage.getItem('userPreferences') || '{}');
     preferences.savedForms = preferences.savedForms || [];
     preferences.savedForms.push({
@@ -391,7 +315,6 @@ function submitForm(formData) {
     });
     localStorage.setItem('userPreferences', JSON.stringify(preferences));
 
-    // Show success message
     const successElement = document.getElementById('form-success');
     if (successElement) {
         successElement.style.display = 'block';
@@ -402,13 +325,8 @@ function submitForm(formData) {
         `;
     }
 
-    // Reset form
     contactForm.reset();
-
-    // Show notification
     showNotification(`Thank you ${formData.name}! Your message has been sent.`, 'success');
-
-    // Scroll to success message
     successElement.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -421,7 +339,6 @@ function loadSavedFormData() {
         const lastForm = savedForms[savedForms.length - 1];
         const newsletterCheckbox = document.getElementById('newsletter');
 
-        // Pre-check newsletter if user subscribed before
         if (newsletterCheckbox && lastForm.newsletter) {
             newsletterCheckbox.checked = true;
         }
@@ -430,11 +347,9 @@ function loadSavedFormData() {
 
 // Notification system (Required: DOM manipulation)
 function showNotification(message, type = 'info') {
-    // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
 
-    // Create notification
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
@@ -442,7 +357,6 @@ function showNotification(message, type = 'info') {
         <button class="notification-close">&times;</button>
     `;
 
-    // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -462,14 +376,12 @@ function showNotification(message, type = 'info') {
 
     document.body.appendChild(notification);
 
-    // Close button functionality
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
         notification.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => notification.remove(), 300);
     });
 
-    // Auto remove after 5 seconds
     setTimeout(() => {
         if (notification.parentNode) {
             notification.style.animation = 'slideOut 0.3s ease';
@@ -492,7 +404,6 @@ function trackPageAnalytics() {
     analytics[currentPage].visits++;
     analytics[currentPage].lastVisit = new Date().toISOString();
 
-    // Track time on page
     const startTime = Date.now();
     window.addEventListener('beforeunload', () => {
         const timeSpent = Date.now() - startTime;
@@ -566,22 +477,11 @@ function addDynamicStyles() {
 
 // Main initialization function (Required: Function organization)
 function initializeWebsite() {
-    // Add dynamic styles
     addDynamicStyles();
-
-    // Initialize localStorage (Required: localStorage)
     initializeLocalStorage();
-
-    // Initialize mobile menu
     initializeMobileMenu();
-
-    // Initialize CTA button
     initializeCTAButton();
-
-    // Initialize demo section
     initializeDemoSection();
-
-    // Initialize contact form
     initializeContactForm();
 
     // Display team members (only on about page)
@@ -589,10 +489,7 @@ function initializeWebsite() {
         displayTeamMembers();
     }
 
-    // Track page analytics
     trackPageAnalytics();
-
-    // Add scroll effect to navigation
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
         const navbar = document.querySelector('.navbar');
@@ -607,7 +504,6 @@ function initializeWebsite() {
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
 
-    // Show welcome message for first-time visitors
     const visitCount = parseInt(localStorage.getItem('visitCount') || '1');
     if (visitCount === 1) {
         setTimeout(() => {
@@ -617,7 +513,6 @@ function initializeWebsite() {
 
     console.log('Website initialized successfully!');
     console.log(`Visit count: ${visitCount}`);
-    console.log('All JavaScript features loaded and ready.');
 }
 
 // Initialize when DOM is loaded (Required: Event handling)
@@ -630,13 +525,3 @@ document.addEventListener('visibilitychange', () => {
     preferences.tabSwitches = (preferences.tabSwitches || 0) + 1;
     localStorage.setItem('userPreferences', JSON.stringify(preferences));
 });
-
-// Export functions for testing (if needed)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        initializeWebsite,
-        validateField,
-        displayDemo,
-        showNotification
-    };
-}

@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+/* Root variables for easy theming and consistent styling */
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #3498db;
@@ -23,11 +24,13 @@
     --max-width: 1200px;
 }
 
+/* Base font size and smooth scrolling */
 html {
     font-size: 16px;
     scroll-behavior: smooth;
 }
 
+/* Body styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -36,6 +39,7 @@ body {
     font-weight: 400;
 }
 
+/* Container for content with a max-width */
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -147,6 +151,7 @@ a:hover {
     backdrop-filter: blur(10px);
 }
 
+/* Navigation container styles */
 .nav-container {
     max-width: var(--max-width);
     margin: 0 auto;
