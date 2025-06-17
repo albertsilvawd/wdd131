@@ -28,7 +28,7 @@ const validationPatterns = {
     phone: /^\+?[\d\s\-\(\)]{10,}$/
 };
 
-// Initialize localStorage data (Required: localStorage usage)
+// Initialize localStorage data
 function initializeLocalStorage() {
     if (!localStorage.getItem('visitCount')) {
         localStorage.setItem('visitCount', '1');
@@ -45,14 +45,14 @@ function initializeLocalStorage() {
         }
     }
 
-    // Store user preferences (Required: localStorage)
+    // Store user preferences
     if (!localStorage.getItem('userPreferences')) {
         const defaultPreferences = { theme: 'light', newsletter: false, language: 'en', notifications: true, savedForms: [] };
         localStorage.setItem('userPreferences', JSON.stringify(defaultPreferences));
     }
 }
 
-// Mobile menu toggle functionality (Required: DOM manipulation)
+// Mobile menu toggle functionality
 function initializeMobileMenu() {
     if (mobileMenu && navMenu) {
         mobileMenu.addEventListener('click', (e) => {
@@ -65,6 +65,7 @@ function initializeMobileMenu() {
             localStorage.setItem('userPreferences', JSON.stringify(preferences));
         });
 
+        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!mobileMenu.contains(e.target) && !navMenu.contains(e.target)) {
                 mobileMenu.classList.remove('active');
@@ -74,7 +75,7 @@ function initializeMobileMenu() {
     }
 }
 
-// CTA button functionality (Required: Event listeners)
+// CTA button functionality
 function initializeCTAButton() {
     if (ctaBtn) {
         ctaBtn.addEventListener('click', (e) => {
@@ -116,7 +117,7 @@ function initializeCTAButton() {
     }
 }
 
-// Demo functionality (Required: Arrays and loops)
+// Demo functionality
 function initializeDemoSection() {
     if (demoButtons.length > 0 && demoDisplay) {
         demoButtons.forEach((btn) => {
@@ -138,7 +139,7 @@ function initializeDemoSection() {
     }
 }
 
-// Display demo content (Required: Template literals and DOM manipulation)
+// Display demo content
 function displayDemo(demoKey) {
     const demo = demoContent[demoKey];
     if (!demo) return;
@@ -171,7 +172,7 @@ function displayDemo(demoKey) {
     }, 100);
 }
 
-// Team members display (Required: Arrays and DOM manipulation)
+// Team members display
 function displayTeamMembers() {
     if (!teamGrid) return;
 
@@ -203,7 +204,7 @@ function displayTeamMembers() {
     });
 }
 
-// Form validation and handling (Required: Form validation)
+// Form validation and handling
 function initializeContactForm() {
     if (!contactForm) return;
 
@@ -252,59 +253,7 @@ function initializeContactForm() {
     loadSavedFormData();
 }
 
-// Field validation function (Required: If/else and validation)
-function validateField(fieldName, element) {
-    const value = element.value.trim();
-    const errorElement = document.getElementById(`${fieldName}-error`);
-    let isValid = true;
-    let errorMessage = '';
-
-    if (['name', 'email', 'subject', 'message'].includes(fieldName) && !value) {
-        isValid = false;
-        errorMessage = 'This field is required.';
-    } else if (value) {
-        if (fieldName === 'name' && !validationPatterns.name.test(value)) {
-            isValid = false;
-            errorMessage = 'Please enter a valid name (2-50 characters, letters only).';
-        } else if (fieldName === 'email' && !validationPatterns.email.test(value)) {
-            isValid = false;
-            errorMessage = 'Please enter a valid email address.';
-        } else if (fieldName === 'phone' && value && !validationPatterns.phone.test(value)) {
-            isValid = false;
-            errorMessage = 'Please enter a valid phone number.';
-        } else if (fieldName === 'message' && value.length < 10) {
-            isValid = false;
-            errorMessage = 'Message must be at least 10 characters long.';
-        }
-    }
-
-    if (errorElement) {
-        errorElement.textContent = errorMessage;
-    }
-
-    if (isValid) {
-        element.classList.remove('error');
-    } else {
-        element.classList.add('error');
-    }
-
-    return isValid;
-}
-
-// Clear error function
-function clearError(fieldName) {
-    const errorElement = document.getElementById(`${fieldName}-error`);
-    const inputElement = document.getElementById(fieldName);
-
-    if (errorElement) {
-        errorElement.textContent = '';
-    }
-    if (inputElement) {
-        inputElement.classList.remove('error');
-    }
-}
-
-// Form submission (Required: localStorage and DOM manipulation)
+// Form submission
 function submitForm(formData) {
     const preferences = JSON.parse(localStorage.getItem('userPreferences') || '{}');
     preferences.savedForms = preferences.savedForms || [];
@@ -330,22 +279,7 @@ function submitForm(formData) {
     successElement.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Load saved form data
-function loadSavedFormData() {
-    const preferences = JSON.parse(localStorage.getItem('userPreferences') || '{}');
-    const savedForms = preferences.savedForms || [];
-
-    if (savedForms.length > 0) {
-        const lastForm = savedForms[savedForms.length - 1];
-        const newsletterCheckbox = document.getElementById('newsletter');
-
-        if (newsletterCheckbox && lastForm.newsletter) {
-            newsletterCheckbox.checked = true;
-        }
-    }
-}
-
-// Notification system (Required: DOM manipulation)
+// Show notification
 function showNotification(message, type = 'info') {
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
@@ -357,127 +291,18 @@ function showNotification(message, type = 'info') {
         <button class="notification-close">&times;</button>
     `;
 
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: ${type === 'error' ? '#e74c3c' : type === 'success' ? '#2ecc71' : '#3498db'};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 5px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        max-width: 400px;
-        animation: slideIn 0.3s ease;
-    `;
-
     document.body.appendChild(notification);
 
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
-        notification.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => notification.remove(), 300);
+        notification.remove();
     });
 
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => notification.remove(), 300);
-        }
-    }, 5000);
+    setTimeout(() => notification.remove(), 5000);
 }
 
-// Page analytics (Required: localStorage)
-function trackPageAnalytics() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const analytics = JSON.parse(localStorage.getItem('pageAnalytics') || '{}');
-
-    analytics[currentPage] = analytics[currentPage] || {
-        visits: 0,
-        totalTime: 0,
-        lastVisit: null
-    };
-
-    analytics[currentPage].visits++;
-    analytics[currentPage].lastVisit = new Date().toISOString();
-
-    const startTime = Date.now();
-    window.addEventListener('beforeunload', () => {
-        const timeSpent = Date.now() - startTime;
-        analytics[currentPage].totalTime += timeSpent;
-        localStorage.setItem('pageAnalytics', JSON.stringify(analytics));
-    });
-
-    localStorage.setItem('pageAnalytics', JSON.stringify(analytics));
-}
-
-// Add CSS animations dynamically
-function addDynamicStyles() {
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-        
-        .team-member {
-            animation: fadeInUp 0.6s ease forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .demo-btn.active {
-            background-color: #2c3e50 !important;
-            transform: scale(1.05);
-        }
-        
-        .notification-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0;
-            line-height: 1;
-        }
-        
-        .demo-features {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-        
-        .demo-features li {
-            margin: 0.5rem 0;
-            color: #555;
-        }
-        
-        .demo-stats {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-// Main initialization function (Required: Function organization)
+// Initialize website
 function initializeWebsite() {
-    addDynamicStyles();
     initializeLocalStorage();
     initializeMobileMenu();
     initializeCTAButton();
@@ -488,40 +313,7 @@ function initializeWebsite() {
     if (window.location.pathname.includes('about') || document.getElementById('team-grid')) {
         displayTeamMembers();
     }
-
-    trackPageAnalytics();
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-
-    const visitCount = parseInt(localStorage.getItem('visitCount') || '1');
-    if (visitCount === 1) {
-        setTimeout(() => {
-            showNotification('Welcome to our website! Explore all our features.', 'info');
-        }, 2000);
-    }
-
-    console.log('Website initialized successfully!');
-    console.log(`Visit count: ${visitCount}`);
 }
 
-// Initialize when DOM is loaded (Required: Event handling)
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeWebsite);
-
-// Handle page visibility changes
-document.addEventListener('visibilitychange', () => {
-    const preferences = JSON.parse(localStorage.getItem('userPreferences') || '{}');
-    preferences.lastActivity = new Date().toISOString();
-    preferences.tabSwitches = (preferences.tabSwitches || 0) + 1;
-    localStorage.setItem('userPreferences', JSON.stringify(preferences));
-});
