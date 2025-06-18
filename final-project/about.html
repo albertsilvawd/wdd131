@@ -10,46 +10,49 @@
 </head>
 
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Header with navigation -->
     <header>
-        <nav class="navbar">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a href="index.html">TechSolutions</a>
+                    <a href="index.html" aria-label="TechSolutions Home">TechSolutions</a>
                 </div>
-                <ul class="nav-menu" id="nav-menu">
+                <ul class="nav-menu" id="nav-menu" aria-label="Main navigation menu">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.html" class="nav-link" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="about.html" class="nav-link active">About</a>
+                        <a href="about.html" class="nav-link">About</a>
                     </li>
                     <li class="nav-item">
                         <a href="contact.html" class="nav-link">Contact</a>
                     </li>
                 </ul>
-                <div class="nav-toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
+                <button class="nav-toggle" id="mobile-menu" aria-label="Toggle mobile navigation" aria-expanded="false">
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                </button>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section class="page-header">
+    <main id="main-content">
+        <section class="page-header" aria-labelledby="page-header-heading">
             <div class="container">
-                <h1>About TechSolutions</h1>
-                <p>Discover our journey, values, and the talented team behind our success</p>
+                <h1 id="page-header-heading">About TechSolutions</h1>
+                <p>Discover our journey, values, and the talented team behind our success.</p>
             </div>
         </section>
 
-        <section class="about-content">
+        <section class="about-content" aria-labelledby="about-content-heading">
             <div class="container">
                 <div class="about-grid">
                     <div class="about-text">
-                        <h2>Our Story</h2>
+                        <h2 id="about-content-heading">Our Story</h2>
                         <p>Founded in 2025, TechSolutions emerged from a shared vision to bridge the gap between
                             innovative technology and practical business solutions. What started as a small team of
                             passionate developers has grown into a comprehensive technology partner for businesses of
@@ -67,10 +70,10 @@
 
                         <h2>Our Values</h2>
                         <ul class="values-list">
-                            <li><strong>Innovation:</strong> We stay at the forefront of technology trends</li>
-                            <li><strong>Quality:</strong> We deliver excellence in every project</li>
-                            <li><strong>Integrity:</strong> We build trust through transparency and honesty</li>
-                            <li><strong>Collaboration:</strong> We work closely with our clients as partners</li>
+                            <li><strong>Innovation:</strong> We stay at the forefront of technology trends.</li>
+                            <li><strong>Quality:</strong> We deliver excellence in every project.</li>
+                            <li><strong>Integrity:</strong> We build trust through transparency and honesty.</li>
+                            <li><strong>Collaboration:</strong> We work closely with our clients as partners.</li>
                         </ul>
                     </div>
                     <div class="about-image">
@@ -81,40 +84,67 @@
         </section>
 
         <!-- Team section with dynamic content -->
-        <section class="team-section">
+        <section class="team-section" aria-labelledby="team-section-heading">
             <div class="container">
-                <h2>Meet Our Team</h2>
+                <h2 id="team-section-heading">Meet Our Team</h2>
                 <p class="team-intro">Our diverse team of experts brings together years of experience and a passion for
                     technology innovation. Our team is made up of a unique combination of recent graduates in Web
                     Development with practical experience and seasoned professionals, allowing us to bring creative and
                     efficient solutions to every challenge.</p>
                 <div class="team-grid" id="team-grid">
-                    <!-- Team members will be loaded via JavaScript -->
+                    <!-- Team member 1 -->
+                    <div class="team-member">
+                        <img src="images/team1.webp" alt="Team Member 1" class="team-member-img">
+                        <h3>Albert Silva</h3>
+                        <p>Lead Developer</p>
+                    </div>
+                    <!-- Team member 2 -->
+                    <div class="team-member">
+                        <img src="images/team2.webp" alt="Team Member 2" class="team-member-img">
+                        <h3>Jane Smith</h3>
+                        <p>Project Manager</p>
+                    </div>
+                    <!-- Team member 3 -->
+                    <div class="team-member">
+                        <img src="images/team3.webp" alt="Team Member 3" class="team-member-img">
+                        <h3>Sam Wilson</h3>
+                        <p>UI/UX Designer</p>
+                    </div>
+                    <!-- Team member 4 -->
+                    <div class="team-member">
+                        <img src="images/team4.webp" alt="Team Member 4" class="team-member-img">
+                        <h3>Emma Johnson</h3>
+                        <p>Marketing Specialist</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Company timeline -->
-        <section class="timeline-section">
+        <section class="timeline-section" aria-labelledby="timeline-section-heading">
             <div class="container">
-                <h2>Our Journey</h2>
-                <div class="timeline" id="timeline">
-                    <!-- Timeline will be populated by JavaScript -->
+                <h2 id="timeline-section-heading">Our Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>2025 - Company Founded</h3>
+                        <p>TechSolutions was established with the goal of providing innovative solutions for businesses.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-container">
             <p>&copy; 2025 TechSolutions. All rights reserved.</p>
-            <p><a href="references.html">References</a></p>
+            <p><a href="references.html" aria-label="View references">References</a></p>
         </div>
     </footer>
 
     <!-- Notification container -->
-    <div id="notification-container"></div>
+    <div id="notification-container" aria-live="assertive" aria-atomic="true"></div>
 
     <script src="js/script.js"></script>
 </body>

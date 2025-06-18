@@ -11,16 +11,19 @@
 </head>
 
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Header with navigation -->
     <header>
-        <nav class="navbar">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a href="index.html">TechSolutions</a>
+                    <a href="index.html" aria-label="Go to TechSolutions Home">TechSolutions</a>
                 </div>
-                <ul class="nav-menu" id="nav-menu">
+                <ul class="nav-menu" id="nav-menu" aria-label="Main navigation menu">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.html" class="nav-link" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="about.html" class="nav-link">About</a>
@@ -29,28 +32,28 @@
                         <a href="contact.html" class="nav-link active">Contact</a>
                     </li>
                 </ul>
-                <div class="nav-toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
+                <button class="nav-toggle" id="mobile-menu" aria-label="Toggle mobile navigation" aria-expanded="false">
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                    <span class="bar" aria-hidden="true"></span>
+                </button>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section class="page-header">
+    <main id="main-content">
+        <section class="page-header" aria-labelledby="contact-page-header">
             <div class="container">
-                <h1>Contact Us</h1>
-                <p>Ready to start your next project? Get in touch with our team today</p>
+                <h1 id="contact-page-header">Contact Us</h1>
+                <p>Ready to start your next project? Get in touch with our team today!</p>
             </div>
         </section>
 
-        <section class="contact-section">
+        <section class="contact-section" aria-labelledby="contact-info-heading">
             <div class="container">
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h2>Get In Touch</h2>
+                        <h2 id="contact-info-heading">Get In Touch</h2>
                         <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
 
                         <div class="contact-item">
@@ -67,29 +70,30 @@
 
                         <div class="contact-item">
                             <h3>📍 Address</h3>
-                            <p>Av. 9 de Julio 1234<br>
-                                CABA, Buenos Aires, Argentina</p>
+                            <p>Av. 9 de Julio 1234<br> CABA, Buenos Aires, Argentina</p>
                         </div>
 
                         <div class="contact-item">
                             <h3>🚀 Response Time</h3>
-                            <p>We typically respond within 24 hours</p>
+                            <p>We typically respond within 24 hours.</p>
                         </div>
                     </div>
 
                     <!-- Contact form -->
                     <div class="contact-form">
                         <h2>Send us a Message</h2>
-                        <form id="contact-form" novalidate>
+                        <form id="contact-form" novalidate aria-labelledby="contact-form-heading">
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required aria-describedby="name-error">
+                                <input type="text" id="name" name="name" required aria-describedby="name-error"
+                                    aria-required="true">
                                 <span class="error-message" id="name-error" role="alert"></span>
                             </div>
 
                             <div class="form-group">
                                 <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required aria-describedby="email-error">
+                                <input type="email" id="email" name="email" required aria-describedby="email-error"
+                                    aria-required="true">
                                 <span class="error-message" id="email-error" role="alert"></span>
                             </div>
 
@@ -106,7 +110,8 @@
 
                             <div class="form-group">
                                 <label for="subject">Subject *</label>
-                                <select id="subject" name="subject" required aria-describedby="subject-error">
+                                <select id="subject" name="subject" required aria-describedby="subject-error"
+                                    aria-required="true">
                                     <option value="">Select a subject</option>
                                     <option value="general">General Inquiry</option>
                                     <option value="web-development">Web Development</option>
@@ -122,7 +127,8 @@
                             <div class="form-group">
                                 <label for="message">Message *</label>
                                 <textarea id="message" name="message" rows="5" required aria-describedby="message-error"
-                                    placeholder="Tell us about your project or inquiry..."></textarea>
+                                    placeholder="Tell us about your project or inquiry..."
+                                    aria-required="true"></textarea>
                                 <span class="error-message" id="message-error" role="alert"></span>
                             </div>
 
@@ -130,16 +136,18 @@
                                 <label class="checkbox-label">
                                     <input type="checkbox" id="newsletter" name="newsletter">
                                     <span class="checkmark"></span>
-                                    Subscribe to our newsletter for tech insights and updates
+                                    Subscribe to our newsletter for tech insights and updates.
                                 </label>
                             </div>
 
                             <div class="form-group">
                                 <label class="checkbox-label">
-                                    <input type="checkbox" id="privacy" name="privacy" required>
+                                    <input type="checkbox" id="privacy" name="privacy" required
+                                        aria-describedby="privacy-error" aria-required="true">
                                     <span class="checkmark"></span>
-                                    I agree to the <a href="#" target="_blank">Privacy Policy</a> and <a href="#"
-                                        target="_blank">Terms of Service</a> *
+                                    I agree to the <a href="#" target="_blank" aria-label="Privacy Policy">Privacy
+                                        Policy</a> and <a href="#" target="_blank" aria-label="Terms of Service">Terms
+                                        of Service</a> *
                                 </label>
                                 <span class="error-message" id="privacy-error" role="alert"></span>
                             </div>
@@ -164,22 +172,36 @@
             <div class="container">
                 <h2>Frequently Asked Questions</h2>
                 <div class="faq-grid" id="faq-grid">
-                    <!-- FAQ items will be loaded via JavaScript -->
+                    <div class="faq-item">
+                        <h3 class="faq-question">What is TechSolutions?</h3>
+                        <p class="faq-answer">TechSolutions is a technology company specializing in web development,
+                            cloud solutions, and mobile app development.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">How can I get started with TechSolutions?</h3>
+                        <p class="faq-answer">You can contact us via the contact form or email us at
+                            hello@techsolutions.com to discuss your project.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">What are your support hours?</h3>
+                        <p class="faq-answer">We offer support Monday to Friday, 9:00 AM to 6:00 PM ART (Argentina
+                            Time).</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-container">
             <p>&copy; 2025 TechSolutions. All rights reserved.</p>
-            <p><a href="references.html">References</a></p>
+            <p><a href="references.html" aria-label="View references">References</a></p>
         </div>
     </footer>
 
     <!-- Notification container -->
-    <div id="notification-container"></div>
+    <div id="notification-container" aria-live="assertive" aria-atomic="true"></div>
 
     <script src="js/script.js"></script>
 </body>
