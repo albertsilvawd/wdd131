@@ -118,51 +118,6 @@ a:focus {
     outline: 2px solid transparent;
 }
 
-/* Utility Classes */
-.text-center {
-    text-align: center;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.mb-1 {
-    margin-bottom: 0.5rem;
-}
-
-.mb-2 {
-    margin-bottom: 1rem;
-}
-
-.mb-3 {
-    margin-bottom: 1.5rem;
-}
-
-.mb-4 {
-    margin-bottom: 2rem;
-}
-
-.mt-1 {
-    margin-top: 0.5rem;
-}
-
-.mt-2 {
-    margin-top: 1rem;
-}
-
-.mt-3 {
-    margin-top: 1.5rem;
-}
-
-.mt-4 {
-    margin-top: 2rem;
-}
-
 /* Navigation Styles */
 .navbar {
     background-color: var(--primary-color);
@@ -248,81 +203,63 @@ a:focus {
     transform: translateY(-2px);
 }
 
-/* Demo Section Styles */
-.demo-controls {
+/* Team Section */
+.team-grid {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    /* Alinha as imagens lado a lado */
+    justify-content: space-between;
+    /* Garante espaçamento entre as imagens */
+    gap: 20px;
+    /* Espaço entre as imagens */
+    flex-wrap: wrap;
+    /* Permite que as imagens se ajustem em telas menores */
+    text-align: center;
+    /* Alinha o texto ao centro */
 }
 
-.demo-btn {
-    padding: 0.75rem 1.5rem;
-    background-color: var(--light-bg);
-    border: 2px solid var(--secondary-color);
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    color: var(--primary-color);
-    cursor: pointer;
-    transition: var(--transition);
+.team-member {
+    width: 23%;
+    /* Controla a largura das imagens, ajustado para 4 membros lado a lado */
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.demo-btn:hover,
-.demo-btn:focus {
-    background-color: var(--secondary-color);
-    color: white;
-    outline: none;
-}
-
-.demo-btn.active {
-    background-color: var(--secondary-color);
-    color: white;
-}
-
-.demo-display {
-    background-color: white;
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    min-height: 300px;
-}
-
-.demo-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
-
-.demo-text h3 {
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-}
-
-.demo-text ul {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-}
-
-.demo-text li {
-    margin-bottom: 0.5rem;
-}
-
-.demo-image {
-    width: 100%;
-    max-height: 300px;
+.team-member img {
+    width: 150px;
+    /* Define uma largura fixa para as imagens */
+    height: 150px;
+    /* Define uma altura fixa para as imagens */
     object-fit: cover;
-    border-radius: var(--border-radius);
-    display: none;
-    /* Hidden on mobile */
+    /* Garante que a imagem não distorça */
+    border-radius: 50%;
+    /* Mantém o formato circular das imagens */
+    margin-bottom: 15px;
 }
 
-@media (min-width: 768px) {
-    .demo-content {
-        grid-template-columns: 1fr 1fr;
+.team-member h4 {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    /* Adiciona um pequeno espaço entre a imagem e o nome */
+}
+
+.team-member p {
+    font-size: 0.875rem;
+    /* Ajusta o tamanho da descrição */
+    color: var(--text-light);
+}
+
+/* Para telas pequenas, ajuste para as imagens ficarem mais centralizadas */
+@media (max-width: 768px) {
+    .team-grid {
+        flex-direction: column;
+        /* Para telas menores, as imagens se empilham */
+        align-items: center;
+        /* Centraliza as imagens */
     }
 
-    .demo-image {
-        display: block;
+    .team-member {
+        width: 80%;
+        /* Aumenta a largura das imagens em telas menores */
     }
 }
 
@@ -334,17 +271,6 @@ a:focus {
     text-align: center;
     position: relative;
     overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,800 1000,1000"/></svg>');
-    background-size: cover;
 }
 
 .hero-container {
@@ -381,103 +307,11 @@ a:focus {
     text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: var(--shadow);
-    position: relative;
-    overflow: hidden;
 }
 
-.cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: var(--transition);
-}
-
-.cta-button:hover::before,
-.cta-button:focus::before {
-    left: 100%;
-}
-
-.cta-button:hover,
-.cta-button:focus {
+.cta-button:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-hover);
-}
-
-.cta-button:active {
-    transform: translateY(-1px);
-}
-
-/* Features Section */
-.features {
-    padding: 6rem 0;
-    background-color: var(--white);
-}
-
-.features h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    margin-top: 2rem;
-}
-
-.feature-card {
-    background-color: var(--white);
-    padding: 2.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    text-align: center;
-    transition: var(--transition);
-    border: 1px solid var(--border-color);
-    position: relative;
-    overflow: hidden;
-}
-
-.feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-    transform: scaleX(0);
-    transition: var(--transition);
-}
-
-.feature-card:hover::before {
-    transform: scaleX(1);
-}
-
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-hover);
-}
-
-.feature-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
-    transition: var(--transition);
-}
-
-.feature-card:hover img {
-    transform: scale(1.05);
-}
-
-.feature-card h3 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
 }
 
 /* Footer Styles */
