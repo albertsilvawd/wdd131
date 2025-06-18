@@ -11,11 +11,15 @@
     <meta name="author" content="TechSolutions">
     <title>TechSolutions - Innovative Technology Solutions</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Preload key images for better performance -->
+    <link rel="preload" href="images/web-development.webp" as="image">
+    <link rel="preload" href="images/cloud-solutions.webp" as="image">
+    <link rel="preload" href="images/mobile-apps.webp" as="image">
 </head>
 
 <body>
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
 
     <!-- Header with navigation -->
     <header>
@@ -24,15 +28,15 @@
                 <div class="nav-logo">
                     <a href="index.html" aria-label="TechSolutions Home">TechSolutions</a>
                 </div>
-                <ul class="nav-menu" id="nav-menu">
+                <ul class="nav-menu" id="nav-menu" aria-label="Main navigation menu">
                     <li class="nav-item">
                         <a href="index.html" class="nav-link active" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
+                        <a href="about.html" class="nav-link" aria-label="About TechSolutions">About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="contact.html" class="nav-link">Contact</a>
+                        <a href="contact.html" class="nav-link" aria-label="Contact TechSolutions">Contact</a>
                     </li>
                 </ul>
                 <button class="nav-toggle" id="mobile-menu" aria-label="Toggle mobile navigation" aria-expanded="false">
@@ -51,7 +55,8 @@
             <div class="hero-container">
                 <h1 id="hero-heading">Innovative Technology Solutions</h1>
                 <p>Empowering businesses with cutting-edge technology and exceptional service</p>
-                <button class="cta-button" id="cta-btn" type="button">Get Started Today</button>
+                <button class="cta-button" id="cta-btn" type="button"
+                    aria-label="Get started today with TechSolutions">Get Started Today</button>
             </div>
         </section>
 
@@ -100,7 +105,8 @@
                     <button class="demo-btn" data-demo="demo3" aria-selected="false" aria-controls="demo-display"
                         id="tab-mobile" type="button">Mobile Apps</button>
                 </div>
-                <div class="demo-display" id="demo-display" role="tabpanel" aria-live="polite" aria-labelledby="demo-heading">
+                <div class="demo-display" id="demo-display" role="tabpanel" aria-live="polite"
+                    aria-labelledby="demo-heading">
                     <p>Click a service above to learn more about our offerings</p>
                 </div>
             </div>
@@ -136,7 +142,7 @@
     <footer role="contentinfo">
         <div class="footer-container">
             <p>&copy; 2025 TechSolutions. All rights reserved.</p>
-            <p><a href="references.html">References</a></p>
+            <p><a href="references.html" aria-label="References page">References</a></p>
         </div>
     </footer>
 
@@ -144,7 +150,7 @@
     <div id="notification-container" aria-live="assertive" aria-atomic="true"></div>
 
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 
 </html>

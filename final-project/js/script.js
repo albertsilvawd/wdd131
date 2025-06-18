@@ -227,44 +227,6 @@ document.addEventListener('DOMContentLoaded', function () {
         scrollTimeout = setTimeout(updateActiveSection, 100);
     }, passiveOptions);
 
-    // ===== INTERACTIVE SERVICE DEMO =====
-    const demoButtons = document.querySelectorAll('.demo-btn');
-    const demoDisplay = document.getElementById('demo-display');
-
-    // Add event listeners to each button
-    demoButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            // Clear previous content
-            demoDisplay.innerHTML = '';
-
-            // Get the service demo name from data attribute
-            const demoName = this.getAttribute('data-demo');
-            let content;
-
-            // Determine the content to display based on the button clicked
-            switch (demoName) {
-                case 'demo1':
-                    content = '<h3>Web Development</h3><p>Our Web Development services offer cutting-edge, responsive web apps built with modern technologies for great performance and UX.</p>';
-                    break;
-                case 'demo2':
-                    content = '<h3>Cloud Solutions</h3><p>We provide scalable cloud infrastructure and migration services to accelerate your business transformation.</p>';
-                    break;
-                case 'demo3':
-                    content = '<h3>Mobile Apps</h3><p>We develop cross-platform and native mobile applications that engage users and drive business growth.</p>';
-                    break;
-                default:
-                    content = '<p>Click a service above to learn more about our offerings</p>';
-            }
-
-            // Insert content into the display area
-            demoDisplay.innerHTML = content;
-
-            // Update active button
-            demoButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-
     // ===== FORM HANDLING (if contact form exists) =====
     const contactForm = document.querySelector('#contact-form');
 
